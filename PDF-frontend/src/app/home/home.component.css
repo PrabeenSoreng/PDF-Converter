@@ -1,0 +1,173 @@
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+
+.btn-lg {
+    padding: 10px 16px;
+    font-size: 17px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+
+.navbar {
+    position: relative;
+    min-height: 40px;
+    margin-bottom: 18px;
+    border: 1px solid transparent;
+}
+
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-2x {
+    font-size: 2em;
+}
+
+.fa-4x {
+    font-size: 4em;
+}
+
+.pull-right {
+    float: right;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 970px;
+    }
+    .modal-lg {
+        width: 900px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 210px;
+}
+
+#content.container #navigation.navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #3d99f5;
+    border-color: #3d99f5;
+}
+
+#content.container #navigation.navbar .navbar-brand {
+    padding: 0;
+}
+
+#content.container #navigation.navbar .navbar-brand h1 {
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 27.2px;
+}
+
+#content.container #navigation.navbar .navbar-brand h1 .logo-text-converter {
+    color: #fff;
+}
+
+#content.container .control-form .page-name {
+    margin-bottom: 20px;
+    padding-top: 0;
+    padding-left: 0;
+}
+
+#content.container .control-form .page-name h2 {
+    color: #555;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#clientUploadFileHolder .k-upload {
+    position: relative;
+    border-width: 0;
+    background: 0;
+    height: 100%;
+}
+
+#clientUploadFileHolder .k-upload .k-upload-button {
+    display: block;
+    text-align: center;
+    cursor: pointer !important;
+}
+
+#clientUploadFileHolder .k-upload .k-upload-button .k-upload-button-icon {
+    padding-top: 1em;
+}
+
+#clientUploadFileHolder .k-upload .k-upload-button .k-upload-button-icon i {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+#clientUploadFileHolder .k-upload .k-upload-button .k-upload-button-text {
+    line-height: 2em;
+    vertical-align: middle;
+    font-size: 200%;
+    font-weight: bold;
+    text-shadow: 0 0 1ex rgba(0, 0, 0, 0.5);
+    text-decoration: underline;
+}
+
+#clientUploadFileHolder .k-upload .k-upload-button ::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+#clientUploadFileHolder .k-upload .k-upload-button input {
+    cursor: pointer !important;
+    font: 160px monospace !important;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    height: 100%;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.text-dir-fa-arrow:before {
+    content: '';
+}
+
+.fileName {
+    font-size: 18px;
+    color: #3d99f5;
+    font-weight: bold;
+}
