@@ -24,7 +24,7 @@
                         <div class="k-widget k-upload k-header k-upload-empty">
                             <div class="k-dropzone">
                                 <div class="k-upload-button btn btn-lg btn-primary">
-                                    <input type="file" id="clientUpload" autocomplete="off">
+                                    <input type="file" id="clientUpload" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" autocomplete="off">
                                     <div class="k-upload-button-icon">
                                         <i class="fa fa-file-text-o fa-4x" aria-hidden="true"></i>
                                         <i class="fa text-dir-fa-arrow fa-2x" aria-hidden="true"></i>
