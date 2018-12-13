@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
+import { WordService } from '../services/word.service';
 
 const url = 'http://localhost:3000/api/converter/word-to-pdf';
 
@@ -13,13 +14,54 @@ export class HomeComponent implements OnInit {
     url: url,
     disableMultipart: true
   });
+  fileName: string;
+  fileTypeError = false;
+  selectedFile: any;
 
-  constructor() { }
+  constructor(private wordService: WordService) { }
 
   ngOnInit() {
   }
 
   onFileSelected(event) {
     console.log(event);
+    const file: File = event[0];
+    this.fileName = file.name;
+
+    const fileCheck = this.fileName.toLowerCase();
+    if(!fileCheck.match(/(\.docx|\.doc|\.rtf)$/)) {
+      this.fileTypeError = true;
+      return;
+    } else {
+      this.fileTypeError = false;
+    }
+
+    this.ReadAsBase64(file)
+      .then(result => {
+        this.selectedFile = result;
+        this.wordService.convertFile(this.selectedFile, this.fileName)
+          .subscribe(data => {
+            console.log(data);
+          }, err => {
+            console.log(err);
+          });
+      })
+      .catch(err => console.log(err));
+  }
+
+  ReadAsBase64(file) {
+    const reader = new FileReader();
+    const fileValue = new Promise((resolve, reject) => {
+      // reader.onload = () => resolve(reader.result);
+      reader.addEventListener('load', () => {
+        resolve(reader.result);
+      });
+      // reader.onerror = error => reject(err0r);
+      reader.addEventListener('error', event => {
+        reject(event);
+      });
+      reader.readAsDataURL(file);
+    });
+    return fileValue;
   }
 }
