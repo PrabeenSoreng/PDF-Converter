@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="isLoading">
             <div class="col">
                 <div class="loading">
                     <span class="loader"></span>
@@ -63,13 +63,13 @@
         </div>
 
 
-        <div class="well">
+        <div class="well" *ngIf="hideDownloadBtn && !isLoading">
             <div class="row">
                 <div class="col-md-6">
                     <div class="col-md-8">
                         <div>
                             <span class="fileName">
-              fileName.pdf
+                                {{pdfFileName}}
                           </span>
                         </div>
                     </div><br>

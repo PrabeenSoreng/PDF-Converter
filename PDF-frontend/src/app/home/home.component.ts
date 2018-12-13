@@ -17,10 +17,14 @@ export class HomeComponent implements OnInit {
   fileName: string;
   fileTypeError = false;
   selectedFile: any;
+  isLoading = false;
+  hideDownloadBtn = true;
+  pdfFileName: string;
 
   constructor(private wordService: WordService) { }
 
   ngOnInit() {
+    this.hideDownloadBtn = false;
   }
 
   onFileSelected(event) {
@@ -39,11 +43,17 @@ export class HomeComponent implements OnInit {
     this.ReadAsBase64(file)
       .then(result => {
         this.selectedFile = result;
+        this.isLoading = true;
+
         this.wordService.convertFile(this.selectedFile, this.fileName)
           .subscribe(data => {
             console.log(data);
+            this.isLoading = false;
+            this.hideDownloadBtn = true;
+            this.pdfFileName = data.name;
           }, err => {
             console.log(err);
+            this.isLoading = false;
           });
       })
       .catch(err => console.log(err));
