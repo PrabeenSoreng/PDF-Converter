@@ -74,4 +74,11 @@ export class HomeComponent implements OnInit {
     });
     return fileValue;
   }
+
+  download() {
+    this.wordService.downloadFile(this.pdfFileName)
+      .subscribe(data => {
+        console.log(data);
+      }, err => console.log(err));
+  }
 }

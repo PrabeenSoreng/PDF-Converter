@@ -17,4 +17,10 @@ export class WordService {
       name: fileName
     });
   }
+
+  downloadFile(filename) {
+    return this.http.get(`${URL}/word-to-pdf/${filename}`, {
+      responseType: 'blob'
+    });
+  }
 }
