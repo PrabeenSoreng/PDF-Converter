@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   isLoading = false;
   hideDownloadBtn = true;
   pdfFileName: string;
+  deleteError = false;
 
   constructor(private wordService: WordService) { }
 
@@ -45,6 +46,7 @@ export class HomeComponent implements OnInit {
       .then(result => {
         this.selectedFile = result;
         this.isLoading = true;
+        this.deleteError = false;
 
         this.wordService.convertFile(this.selectedFile, this.fileName)
           .subscribe(data => {
@@ -80,6 +82,8 @@ export class HomeComponent implements OnInit {
     this.wordService.downloadFile(this.pdfFileName)
       .subscribe(data => {
         saveAs(data, this.pdfFileName);
-      }, err => console.log(err));
+      }, err => {
+        if(err.status === 404) this.deleteError = true;
+      });
   }
 }

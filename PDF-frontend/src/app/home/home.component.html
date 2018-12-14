@@ -40,11 +40,16 @@
         </div>
 
 
-        <div class="row" *ngIf="fileTypeError">
+        <div class="row">
             <div class="col">
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" *ngIf="fileTypeError">
                     <h3 class="text-center">
                         <strong>Error!</strong> File type must be in either doc, docx or rtf format.
+                    </h3>
+                </div>
+                <div class="alert alert-danger" *ngIf="deleteError">
+                    <h3 class="text-center">
+                        <strong>Error!</strong> File has been deleted! Hence it does not exist.
                     </h3>
                 </div>
             </div>
