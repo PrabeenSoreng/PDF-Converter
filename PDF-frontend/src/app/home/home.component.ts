@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { WordService } from '../services/word.service';
+import { saveAs } from 'file-saver';
 
 const url = 'http://localhost:3000/api/converter/word-to-pdf';
 
@@ -78,7 +79,7 @@ export class HomeComponent implements OnInit {
   download() {
     this.wordService.downloadFile(this.pdfFileName)
       .subscribe(data => {
-        console.log(data);
+        saveAs(data, this.pdfFileName);
       }, err => console.log(err));
   }
 }
