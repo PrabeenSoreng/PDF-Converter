@@ -5,5 +5,10 @@ module.exports = {
         fs.writeFile(`${dir}/${fileName}`, data, (err) => {
             if (err) console.log(err);
         });
+    },
+    deleteFile: (path) => {
+        fs.unlink(path, err => {
+            if (err) console.log(err);
+        });
     }
 }

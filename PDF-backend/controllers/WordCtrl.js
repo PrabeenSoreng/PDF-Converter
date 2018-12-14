@@ -9,9 +9,14 @@ exports.WordToPdf = (req, res) => {
         const base64file = req.body.file.split(';base64,').pop();
         fs.writeFile(`./uploads/${req.body.name}`, base64file, 'base64', async(err) => {
             if (err) console.log(err);
+
             const data = await word2pdf(`./uploads/${req.body.name}`);
             const fileName = req.body.name.split('.')[0];
             await helper.writeToFile(res, './converted', `${fileName}.pdf`, data);
+
+            const filePath = path.join(__dirname, '../uploads/') + req.body.name;
+            await helper.deleteFile(filePath);
+
             return res.status(200).json({ message: 'File converted successfully', name: `${fileName}.pdf` });
         });
     } catch (err) {
@@ -20,6 +25,9 @@ exports.WordToPdf = (req, res) => {
 };
 
 exports.DownloadFile = async(req, res) => {
-    const file = path.join(__dirname, '../converted/') + '/' + req.params.fileName;
-    await res.sendFile(file)
+    const file = path.join(__dirname, '../converted/') + req.params.fileName;
+    await res.sendFile(file);
+    setTimeout(async() => {
+        await helper.deleteFile(file);
+    }, 1000);
 };
